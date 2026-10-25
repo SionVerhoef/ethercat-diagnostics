@@ -10,8 +10,8 @@ if not m:
 fields = dict(re.findall(r'^(\w+):\s*"?(.*?)"?\s*$', m.group(1), re.M))
 desc = fields.get("description", "")
 errors = []
-if fields.get("name") != "ecat-diagnostics":
-    errors.append(f"name must be 'ecat-diagnostics', got {fields.get('name')!r}")
+if fields.get("name") != "ethercat-diagnostics":
+    errors.append(f"name must be 'ethercat-diagnostics', got {fields.get('name')!r}")
 if not desc:
     errors.append("description is missing")
 if len(desc) > 1024:
