@@ -20,6 +20,14 @@ jobs:
       - name: no real network identities committed
         run: python3 scripts/check_private.py
 
+      # Vendor ESI files are the vendor's copyright; fixtures here are hand-written for a
+      # fictional vendor (see CLAUDE.md).
+      - name: ESI files are synthetic
+        run: |
+          bad=$(git grep -l '<EtherCATInfo' -- '*.xml' '*.XML' | while read -r f; do
+            grep -q '<Name>Example Vendor</Name>' "$f" || echo "$f"; done)
+          [ -z "$bad" ] || { echo "ESI files without vendor 'Example Vendor':"; echo "$bad"; exit 1; }
+
       # Manuals and specs are copyrighted and must never land here (see CLAUDE.md).
       - name: no PDFs committed
         run: |

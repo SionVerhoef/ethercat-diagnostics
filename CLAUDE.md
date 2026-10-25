@@ -9,6 +9,17 @@ instructions for using the skill on your own projects, where your data is your o
 clones it, and installed into other people's setups. Assume every commit is permanent and
 already read by a stranger.
 
+## Vendor ESI files are not ours to ship
+
+An ESI file is freely downloadable, but it is still the vendor's copyrighted work. **Never
+commit a vendor's ESI file, or a trimmed or edited copy of one.** What a device *is* — its
+vendor ID, product code, PDO entries, object indices — is fact and may be stated; the file's
+own XML is expression and may not be copied.
+
+Test fixtures and examples are **hand-written ESI for a fictional device**, with the vendor
+named `Example Vendor` and device names that cannot be mistaken for a real product. CI fails
+on any committed `.xml` ESI file that does not name that vendor.
+
 ## Treat real machine data as if it were under NDA
 
 Diagnostics dumps, error-counter logs, topology exports and code come from real machines
@@ -21,6 +32,8 @@ issue text:
 
 - **Customer, site or end-user names**, machine and serial numbers, project codes —
   including inside device names, box names, comments and file paths
+- **ESI files for in-house or customer-specific devices** — they can describe a product that
+  is unreleased or under NDA
 - **AMS NetIDs, IP addresses, MAC addresses, hostnames, credentials, licence keys**
 - **ENI files, `.xti` / `.tsproj` exports and Wireshark captures** — they carry MAC
   addresses, serial numbers and the full topology of one plant; a capture also carries its
@@ -57,8 +70,8 @@ status code 0x001B means a sync manager watchdog; do not paste the manual's tabl
 - **Copyleft** (GPL/LGPL) — do not vendor; it would relicense this skill. Ask first.
 - **Proprietary** (InfoSys, vendor manuals, forums) — research only. Cite and link; reproduce
   no passages, tables, diagrams or screenshots.
-- **Member-only specs** (ETG) — the technical facts can be stated independently; the
-  document's text, tables and figures cannot, and the documents themselves never land here.
+- **Member-only specs and schemas** (ETG) — the technical facts can be stated independently;
+  the document's text, tables, figures and `.xsd` files cannot, and they never land here.
 
 Read the licence from the upstream `LICENSE` file, never a GitHub badge. A citation is not
 permission. Manuals, specs and real recordings stay in `research/` (gitignored) or outside
